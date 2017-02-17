@@ -21,7 +21,7 @@ class CreatePostsTest extends FeatureTestCase
             'user_id' => $user->id,
         ]);
 
-        $this->see('h1', $pregunta);
+        $this->see($pregunta);
     }
 
     function test_creating_a_post_requires_authentication()
@@ -36,7 +36,9 @@ class CreatePostsTest extends FeatureTestCase
             ->visit(route('posts.create'))
             ->press('Publicar')
             ->seePageIs(route('posts.create'))
-            ->seeInElement('#field_title.has-error .help-block', 'El campo título es obligatorio')
-            ->seeInElement('#field_content.has-error .help-block', 'El campo contenido es obligatorio');
+            ->seeErrors([
+                'title' => 'El campo título es obligatorio',
+                'content' => 'El campo contenido es obligatorio'
+            ]);
     }
 }
