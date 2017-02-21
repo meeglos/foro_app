@@ -179,7 +179,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Styde\Html\HtmlServiceProvider::class,
-        GrahamCampbell\Markdown\MarkdownServiceProvider::class
+        GrahamCampbell\Markdown\MarkdownServiceProvider::class,
+        Jenssegers\Date\DateServiceProvider::class
 
     ],
 
@@ -230,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Access' => Styde\Html\Facades\Access::class,
         'Markdown' => GrahamCampbell\Markdown\facades\Markdown::class,
+        'Date' => Jenssegers\Date\Date::class
 
 
     ],
