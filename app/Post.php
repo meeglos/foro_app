@@ -14,7 +14,13 @@ class Post extends Model
 {
 
     protected $fillable = [
-        'title', 'content', 'pending'
+        'agent_code',
+        'client_code',
+        'client_name',
+        'client_phone',
+        'client_name',
+        'client_phone',
+        'description',
     ];
 
     public function user()
@@ -22,9 +28,14 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function setTitleAttribute($value)
+    public function tags()
     {
-        $this->attributes['title'] = $value;
+        return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
+
+    public function setDescriptionAttribute($value)
+    {
+        $this->attributes['description'] = $value;
 
         $this->attributes['slug'] = Str::slug($value);
     }
@@ -50,5 +61,10 @@ class Post extends Model
     public function getTotalAttribute()
     {
         return $total;
+    }
+
+    public function getCategoryOptions()
+    {
+        return ['TV', 'Móvil', 'Correo', 'Área de clientes', 'Internet'];
     }
 }
