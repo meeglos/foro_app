@@ -5,15 +5,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Registrar datos de seguimiento</div>
+                    <div class="panel-heading">Edit {!! $post->description !!}</div>
                     <div class="panel-body">
-                        {!! Form::open(['method' => 'POST', 'route' => 'posts.store']) !!}
+                        {!! Form::model($post, ['method' => 'PATCH', 'action' => ['CreatePostController@update', $post->id]]) !!}
+
                             <div class="col-md-6">
-                                {{--<input type="number" min="0" class="form-control" placeholder="Cantidad" id="cantidad">--}}
                                 {!! Field::text('agent_code', ['label' => 'Reportado por', 'placeholder' => 'Código del agente que reporta la incidencia']) !!}
                             </div>
                             <div class="col-md-6">
-                                {{--<input type="text" class="form-control" placeholder="Ej: [Fibra 300] [Linea M]" id="descripcion">--}}
                                 {!! Field::text('client_code', ['label' => 'Id cliente', 'placeholder' => 'Id del cliente a llamar']) !!}
                             </div>
                             <div class="col-md-6">
@@ -26,7 +25,7 @@
                                 {!! Field::text('client_contact', ['label' => 'Contactar', 'placeholder' => 'Fecha y hora de contacto']) !!}
                             </div>
                             <div class="col-md-6">
-                                {!! Field::select('category[]', $tags,  null, ['id' => 'tag_list', 'label' => 'Categoría', 'multiple']) !!}
+                                {!! Field::select('category[]', $tags, $post->tagList, ['id' => 'tag_list', 'label' => 'Categoría', 'multiple']) !!}
                             </div>
                             <div class="col-md-12">
                                 {!! Field::textarea('description', ['label' => 'Motivo llamada', 'rows' => '3', 'placeholder' => 'Descripción del motivo de llamada']) !!}

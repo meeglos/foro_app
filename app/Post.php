@@ -28,6 +28,11 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function follows()
+    {
+        return $this->hasMany(Follow::class);
+    }
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
@@ -58,13 +63,20 @@ class Post extends Model
         return $difference;
     }
 
-    public function getTotalAttribute()
+    public function getCountAttribute()
     {
+        $total = $this->follows()->count();
+
         return $total;
     }
 
-    public function getCategoryOptions()
+    public function getTagListAttribute()
     {
-        return ['TV', 'Móvil', 'Correo', 'Área de clientes', 'Internet'];
+        return $this->tags->pluck('id')->toArray();
+    }
+
+    public function addFollow($comments)
+    {
+        $this->follows()->create(compact('comments'));
     }
 }

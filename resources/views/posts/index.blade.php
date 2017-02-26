@@ -3,10 +3,28 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-xs-6 col-sm-8 col-md-10">
+        <div class="col-xs-6 col-sm-6 col-md-6">
             <h2>Posts</h2>
         </div>
-        <div class="col-xs-6 col-sm-4 col-md-2" style="margin-top: 22px;">
+        <div class="col-xs-6 col-sm-6 col-md-6" style="margin-top: 22px;">
+
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-info">Seleccionar</button>
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Pendientes</a></li>
+                    <li><a href="#">Finalizados</a></li>
+                    <li><a href="#">Solo los de hoy</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Mostrar todos</a></li>
+                </ul>
+            </div>
+
+
             <a role="button" class="btn btn-danger pull-right" href="create" aria-label="Left Align">Agregar registro
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>
@@ -19,8 +37,8 @@
                 <a href="{{ $post->url }}">
                     {{ $post->description }} | <b style="color: #2d760c;">Creado por: <u>{{ $post->user->name }}</u></b> {{ $post->dif }}
                 </a>
-                <span class="badge">14</span>
-                <span class="badge pull-right" style="background-color: #5c8705;">Pendiente</span>
+                <span class="badge">{{ $post->count }}</span>
+                <span class="label label-info pull-right" style="padding: 5px 10px; font-size: .8em; font-weight: 100;">Pendiente</span>
             </div>
     </div>
         @endforeach

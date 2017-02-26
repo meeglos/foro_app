@@ -20,15 +20,30 @@ class CreatePostController extends Controller
 
         $pos = auth()->user()->posts()->save(new Post($request->all()));
 
-        $pos->tags()->attach($request->input('category'));
+        $pos->tags()->sync($request->input('category'));
 
         return redirect('posts/index');
     }
 
-    public function edit(Post $post)
+    public function edit($id)
     {
         $tags = Tag::pluck('description', 'id')->toArray();
 
+        $post = Post::findOrFail($id);
+
         return view('posts.edit', compact('post', 'tags'));
+    }
+
+    public function update($id, Request $request)
+    {
+        $post = Post::findOrFail($id);
+
+        $post->update($request->all());
+
+//        dd($request->input('category'));
+
+        $post->tags()->sync($request->input('category'));
+
+        return redirect('posts/index');
     }
 }
