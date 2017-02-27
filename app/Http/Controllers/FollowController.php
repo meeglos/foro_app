@@ -17,5 +17,6 @@ class FollowController extends Controller
         auth()->user()->follow($post, $request->get('comments'));
 
         return redirect('posts/' .$post->id . '-' . $post->slug);
+//        return redirect('posts/' .$post->url);
     }
 }

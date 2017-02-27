@@ -31,17 +31,17 @@
         </div>
     </div>
 
-        @foreach($posts as $post)
+    @foreach($posts as $post)
     <div class="panel panel-default" style="margin-bottom: 5px;">
-            <div class="panel-body" style="padding-top: 8px; padding-bottom: 8px;">
-                <a href="{{ $post->url }}">
-                    {{ $post->description }} | <b style="color: #2d760c;">Creado por: <u>{{ $post->user->name }}</u></b> {{ $post->dif }}
-                </a>
-                <span class="badge">{{ $post->count }}</span>
-                <span class="label label-info pull-right" style="padding: 5px 10px; font-size: .8em; font-weight: 100;">Pendiente</span>
-            </div>
+        <div class="panel-body" style="padding-top: 8px; padding-bottom: 8px;">
+            <a href="{{ $post->url }}" data-toggle="tooltip" data-html="true" data-placement="bottom" title="{{ $post->tooltip }}">
+                {{ str_limit($post->description, 80) }} | <b style="color: #2d760c;">Creado por: <u>{{ $post->user->name }}</u></b> {{ $post->dif }}
+            </a>
+            <span class="badge">{{ $post->count }}</span>
+            <span class="label label-info pull-right" style="padding: 5px 10px; font-size: .8em; font-weight: 100;">Pendiente</span>
+        </div>
     </div>
-        @endforeach
+    @endforeach
     <div class="row">
         <div class="col-xs-7 col-xs-offset-5">
             {{ $posts->render() }}

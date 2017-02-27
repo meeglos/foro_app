@@ -6,33 +6,30 @@
         {{ $post->description }} {!! Form::submit('editar', ['class'=> 'btn btn-primary pull-right']) !!}
         <small> <p class="label label-warning">{{ $post->dif }}</p></small>
     </h2>
-    @foreach($post->tags as $tag)
-        <span class="badge" style="padding: 6px 10px;">{{ $tag->description }}</span>
-    @endforeach
-    <h4 style="display: inline-block;"><span style="padding: 5px 10px;" class="label label-danger">Creado por:</span> {{ $post->agent_code}}</h4>
-    <h4 style="display: inline-block;"><span style="padding: 5px 10px;" class="label label-warning">ID del cliente:</span> {{ $post->client_code }}</h4>
-    <h4 style="display: inline-block;"><span style="padding: 5px 10px;" class="label label-success">Contacto del cliente:</span> {{ $post->client_phone }}</h4>
-    <h4 style="display: inline-block;"><span style="padding: 5px 10px;" class="label label-default">Nombre del contacto:</span> {{ $post->client_name }}</h4>
 
-    <hr>
+    <section class="row post-details">
+        <section class="col-md-6 post-details-left">
+            @foreach($post->tags as $tag)
+                <span class="tag-follow">{{ $tag->description }}</span>
+            @endforeach
+            <p class="creado-por">Reportado por: {{ $post->agent_code}} @ {{ $post->fecha }}</p>
 
-    <div class="comment">
+        </section>
+        <section class="col-md-6 post-details-right">
+            <p><span class="post-details-title">ID del cliente:</span> {{ $post->client_code }}</p>
+            <p><span class="post-details-title">Contacto del cliente:</span> {{ $post->client_phone }}</p>
+            <p><span class="post-details-title">Nombre del contacto:</span> {{ $post->client_name }}</p>
+        </section>
+    </section>
 
+    <ol id="lista2">
         @foreach($post->follows as $follow)
-
-            <div class="panel panel-default">
-                <div class="panel-body">
-
-                    <h6><b>{{ $follow->user->name }} {{ $follow->dif }}</b></h6>
-
-                    {{ $follow->comments }}
-
-                </div>
-            </div>
-
+        <li>
+            <p class="follow-header"><span class="follow-author">{{ $follow->user->name }}</span> &#8226; {{ $follow->dif }}</p>
+            <p class="follow-comment">{{ $follow->comments }}</p>
+        </li>
         @endforeach
-
-    </div>
+    </ol>
 
     <hr>
 

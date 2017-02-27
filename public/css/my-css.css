@@ -1,8 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+@import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans+Condensed:300');
+/*
+ * font-family: 'Open Sans Condensed', sans-serif;
+ * font-family: 'Lato', sans-serif;
+*/
+
 .show-header {
     background-color: #c63344;
     color: #FAFAFA;
     padding: 10px;
     border-radius: 10px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: .1em;
 }
 
 #lista2 {
@@ -11,8 +20,8 @@
     *list-style: decimal;
     font: 15px 'trebuchet MS', 'lucida sans';
     padding: 0;
-    margin-bottom: 4em;
-    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    margin-bottom: 3em;
+    /*text-shadow: 0 1px 0 rgba(255,255,255,.5);*/
 }
 
 #lista2 ol {
@@ -24,36 +33,89 @@
     display: block;
     padding: .4em .4em .4em 2em;
     *padding: .4em;
-    margin: .5em 0;
-    background: #ddd;
+    margin: 0 0 2em;
+    background: #fafafa;
     color: #444;
     text-decoration: none;
     border-radius: .3em;
     transition: all .3s ease-out;
+    border: 1px solid #dfdfdf;
+    /*min-height: 1.5em;*/
 }
 
 #lista2 li:hover{
     background: #eee;
 }
 
-#lista2 li:hover:before{
-    transform: rotate(360deg);
-}
+/*#lista2 li:hover:before{*/
+    /*transform: rotate(360deg);*/
+/*}*/
 
 #lista2 li:before{
     content: counter(li);
     counter-increment: li;
     position: absolute;
     left: -1.3em;
-    top: 50%;
-    margin-top: -1.3em;
-    background: #87ceeb;
+    top: -30%;
+    /*margin-top: -1.3em;*/
+    background: #c63344;
     height: 2em;
     width: 2em;
+    color: #fafafa;
     line-height: 2em;
-    border: .3em solid #fff;
+    /*border: 1px solid #dfdfdf;*/
     text-align: center;
-    font-weight: bold;
+    /*font-weight: bold;*/
     border-radius: 2em;
     transition: all .3s ease-out;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+.follow-header {
+    background-color: #545454; /* 263238 */
+    padding: 4px 12px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    position: absolute;
+    top: -35%;
+    /*margin-bottom: 10px;*/
+    color: #fafafa;
+    font-weight: 100;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+.follow-comment {
+    padding-top: 0.65em;
+    margin: 0;
+}
+
+.follow-author {
+    color: #00f5f5;
+}
+.post-details {
+    margin: 0 0 .5em;
+    padding: 1em;
+}
+.post-details-right {
+    border-left: 1px solid #345;
+}
+
+.post-details-right p {
+    margin: 0;
+}
+.post-details-title {
+    font-weight: bold;
+}
+.tag-follow {
+    color: #333333;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #333333;
+    padding: 4px 8px;
+    font-size: .9em;
+}
+.creado-por {
+    margin-top: 1em;
 }

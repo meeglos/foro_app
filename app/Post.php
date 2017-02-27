@@ -62,12 +62,19 @@ class Post extends Model
         $difference = $this->created_at->diffForHumans();
         return $difference;
     }
+    public function getFechaAttribute()
+    {
+        Carbon::setLocale('es');
+        $now = Carbon::now();
+        return $this->created_at->diffForHumans();
+    }
 
     public function getCountAttribute()
     {
         $total = $this->follows()->count();
 
-        return $total;
+        return ($total > 0 ? $total : 'Sin llamadas.');
+
     }
 
     public function getTagListAttribute()
@@ -78,5 +85,10 @@ class Post extends Model
     public function addFollow($comments)
     {
         $this->follows()->create(compact('comments'));
+    }
+
+    public function getTooltipAttribute()
+    {
+        return '<span class="follow-author">' . $this->description . '</span> <br><u>Persona contacto</u>: ' . $this->client_name . ' <br>  <u>Teléfono contacto</u>:  ' . $this->client_phone;
     }
 }

@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/my-css.css" rel="stylesheet">
+    <link href="/css/my-css-tooltip.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
     <!-- Scripts -->
@@ -89,6 +90,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script>$('#tag_list').select2({ placeholder: 'Selecciona una categoría' });</script>
     <script src="/js/app.js"></script>
+    <script src="/js/my-js.js"></script>
 
 
 </body>
